@@ -8,7 +8,9 @@
 
 <p class="red"><span id="bonny" class="bold"></span>Bonny St </p>
 <p class="red"><span id="Martin" class="bold"></span>St Martins Cl </p>
-<p class="red"><span id="west" class="bold"></span>274 West</p>
+<p class="red"><span id="west" class="bold"></span>274 W</p>
+<p class="red"><span id="east" class="bold"></span>274 E</p>
+
 
 <script>
 
@@ -56,6 +58,28 @@ function myFunction(arr) {
     out += ' ' + Math.round(arr[i].timeToStation/60) + 'm';
   }
   document.getElementById("west").innerHTML = out;
+}
+
+//274east
+var xmlhttp = new XMLHttpRequest();
+var url = "https://api.tfl.gov.uk/StopPoint/490003120E/Arrivals?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823";
+
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myArr2 = JSON.parse(this.responseText);
+    myFunction2(myArr2);
+  }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction2(arr2) {
+  var out = "";
+  var i;
+  for(i = 0; i < arr.length; i++) {
+    out += ' ' + Math.round(arr2[I].timeToStation/60) + 'm';
+  }
+  document.getElementById("east").innerHTML = out;
 }
 </script>
 
