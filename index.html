@@ -52,7 +52,7 @@ function myFunction(arr) {
   var out = "";
   var i;
   for(i = 0; i < arr.length; i++) {
-    out += ' ' + Math.round(arr[i].timeToStation/60) + ',';
+    out += ' ' + Math.round(arr[i].timeToStation/60) + 'm';
   }
   document.getElementById("west").innerHTML = out;
 }
