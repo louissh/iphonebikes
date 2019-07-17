@@ -8,20 +8,19 @@
 
 <p class="red"><span id="bonny" class="bold"></span>Bonny St </p>
 <p class="red"><span id="Martin" class="bold"></span>St Martins Cl </p>
-<p class="red"><span id="274west" class="bold"></span>274W</p>
-<p class="red">274E<span id="274east" class="bold"></span></p>
-<p class="red">CMD<span id="cmd" class="bold"></span></p>
+<p class="red"><span id="274west" class="bold"></span>274 West</p>
+<p class="red"><span id="274east" class="bold"></span>274 East</p>
+<p class="red"><span id="cmd" class="bold"></span>CMD</p>
 
 
 
 <script>
-
 //bonny
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var myObj = JSON.parse(this.responseText);
-    document.getElementById("bonny").innerHTML = myObj.additionalProperties[6].value;
+    document.getElementById("bonny").innerHTML = myObj.additionalProperties[6].value + ' bikes';
   }
 };
 xmlhttp.open("GET", "https://api.tfl.gov.uk/BikePoint/BikePoints_462?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823", true);
@@ -33,7 +32,7 @@ var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var myObj2 = JSON.parse(this.responseText);
-    document.getElementById("Martin").innerHTML = myObj2.additionalProperties[6].value;
+    document.getElementById("Martin").innerHTML = myObj2.additionalProperties[6].value + ' bikes';
   }
 };
 xmlhttp.open("GET", "https://api.tfl.gov.uk/BikePoint/BikePoints_604?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823", true);
@@ -90,6 +89,31 @@ function myFunction2(arr) {
   document.getElementById("274east").innerHTML = out;
 }
 
+//cmd
+var xmlhttp3 = new XMLHttpRequest();
+var url3 = "https://api.tfl.gov.uk/StopPoint/910GCMDNRD/Arrivals?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823";
+
+xmlhttp3.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myArr3 = JSON.parse(this.responseText);
+        myArr3.sort(function(a, b) {
+    return a.timeToStation - b.timeToStation;
+});
+
+myFunction3(myArr3);
+  }
+};
+xmlhttp3.open("GET", url3, true);
+xmlhttp3.send();
+
+function myFunction3(arr) {
+  var out = "";
+  var i;
+  for(i = 0; i < arr.length; i++) {
+    out += arr[i].destinationName.replace(/ .*/,'') + ' ' + Math.round(arr[i].timeToStation/60) + 'm <br />';
+  }
+  document.getElementById("cmd").innerHTML = out;
+}
 
 </script>
 
@@ -98,12 +122,14 @@ function myFunction2(arr) {
 <style>
 .bold{
     font-weight: bold;
+    float:right;
 }
 .red{
     font-size: 6vw;
     color: red;
     font-family: arial;
     margin: 0;
+    
 }
 </style>
 
