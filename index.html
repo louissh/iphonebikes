@@ -101,7 +101,7 @@ function myFunction3(arr) {
   var out = "";
   var i;
   for(i = 0; i < arr.length; i++) {
-    out += arr[i].destinationName + ' ' + Math.round(arr[i].timeToStation/60) + 'm';
+    out += ' ' + Math.round(arr[i].timeToStation/60) + 'm';
   }
   document.getElementById("cmd").innerHTML = out;
 }
