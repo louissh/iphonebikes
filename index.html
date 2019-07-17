@@ -61,8 +61,8 @@ function myFunction(arr) {
 }
 
 //274east
-var xmlhttp = new XMLHttpRequest();
-var url = "https://api.tfl.gov.uk/StopPoint/490003120E/Arrivals?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823";
+var xmlhttp2 = new XMLHttpRequest();
+var url2 = "https://api.tfl.gov.uk/StopPoint/490003120E/Arrivals?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823";
 
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
@@ -70,8 +70,8 @@ xmlhttp.onreadystatechange = function() {
     myFunction2(myArr2);
   }
 };
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
+xmlhttp2.open("GET", url2, true);
+xmlhttp2.send();
 
 function myFunction2(arr2) {
   var out = "";
