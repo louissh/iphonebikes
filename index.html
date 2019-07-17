@@ -10,7 +10,9 @@
 <p class="red"><span id="Martin" class="bold"></span>St Martins Cl </p>
 <p class="red"><span id="274west" class="bold"></span>274 West</p>
 <p class="red"><span id="274east" class="bold"></span>274 East</p>
-<p class="red"><span id="cmd" class="bold"></span>CMD</p>
+<div class="red">CMD East <span id="cmdeast" class="bold"></span></div>
+<div class="clearfix"></div>
+<div class="red"><span id="cmdwest" class="bold"></span>CMD West</div>
 
 
 
@@ -89,7 +91,7 @@ function myFunction2(arr) {
   document.getElementById("274east").innerHTML = out;
 }
 
-//cmd
+//cmdeast
 var xmlhttp3 = new XMLHttpRequest();
 var url3 = "https://api.tfl.gov.uk/StopPoint/910GCMDNRD/Arrivals?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823";
 
@@ -99,7 +101,9 @@ xmlhttp3.onreadystatechange = function() {
         myArr3.sort(function(a, b) {
     return a.timeToStation - b.timeToStation;
 });
-
+myArr3 = myArr3.filter(function (a) {
+    return a.platformName === 'Platform 2';
+}).slice(0,3);;
 myFunction3(myArr3);
   }
 };
@@ -112,24 +116,57 @@ function myFunction3(arr) {
   for(i = 0; i < arr.length; i++) {
     out += arr[i].destinationName.replace(/ .*/,'') + ' ' + Math.round(arr[i].timeToStation/60) + 'm <br />';
   }
-  document.getElementById("cmd").innerHTML = out;
+  document.getElementById("cmdeast").innerHTML = out;
 }
 
+//cmdwest
+var xmlhttp4 = new XMLHttpRequest();
+var url4 = "https://api.tfl.gov.uk/StopPoint/910GCMDNRD/Arrivals?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823";
+
+xmlhttp4.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myArr4 = JSON.parse(this.responseText);
+        myArr4.sort(function(a, b) {
+    return a.timeToStation - b.timeToStation;
+});
+myArr4 = myArr4.filter(function (a) {
+    return a.platformName === 'Platform 1';
+}).slice(0,3);
+myFunction4(myArr4);
+  }
+};
+xmlhttp4.open("GET", url3, true);
+xmlhttp4.send();
+
+function myFunction4(arr) {
+  var out = "";
+  var i;
+  for(i = 0; i < arr.length; i++) {
+    out += arr[i].destinationName.replace(/ .*/,'') + ' ' + Math.round(arr[i].timeToStation/60) + 'm <br />';
+  }
+  document.getElementById("cmdwest").innerHTML = out;
+}
 </script>
 
 
 
 <style>
-.bold{
-    font-weight: bold;
-    float:right;
-}
-.red{
+
+*{
     font-size: 6vw;
     color: red;
-    font-family: arial;
+    font-family: sans-serif;
     margin: 0;
-    
+
+}
+.bold{
+    font-weight: bold;
+    float: right;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 </style>
 
