@@ -97,11 +97,11 @@ xmlhttp3.onreadystatechange = function() {
 xmlhttp3.open("GET", url3, true);
 xmlhttp3.send();
 
-function myFunction3(arrr) {
+function myFunction3(arr) {
   var out = "";
   var i;
-  for(i = 0; i < arrr.length; i++) {
-    out += ' ' + Math.round(arrr[I].timeToStation/60) + 'mz';
+  for(i = 0; i < arr.length; i++) {
+    out += ' ' + Math.round(arr[I].timeToStation/60) + 'mz';
   }
   document.getElementById("cmd").innerHTML = out;
 }
