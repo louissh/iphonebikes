@@ -47,6 +47,9 @@ var url = "https://api.tfl.gov.uk/StopPoint/490003120W/Arrivals?app_id=9d4c19c5&
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var myArr = JSON.parse(this.responseText);
+    myArr.sort(function(a, b) {
+    return a.timeToStation - b.timeToStation;
+});
     myFunction(myArr);
   }
 };
@@ -69,7 +72,10 @@ var url2 = "https://api.tfl.gov.uk/StopPoint/490003120E/Arrivals?app_id=9d4c19c5
 xmlhttp2.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var myArr2 = JSON.parse(this.responseText);
-    myFunction2(myArr2);
+        myArr2.sort(function(a, b) {
+    return a.timeToStation - b.timeToStation;
+});
+myFunction2(myArr2);
   }
 };
 xmlhttp2.open("GET", url2, true);
@@ -84,27 +90,6 @@ function myFunction2(arr) {
   document.getElementById("274east").innerHTML = out;
 }
 
-//cmd
-var xmlhttp3 = new XMLHttpRequest();
-var url3 = "https://api.tfl.gov.uk/StopPoint/910GCMDNRD/Arrivals?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823";
-
-xmlhttp3.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    var myArr2 = JSON.parse(this.responseText);
-    myFunction2(myArr2);
-  }
-};
-xmlhttp3.open("GET", url3, true);
-xmlhttp3.send();
-
-function myFunction3(arr) {
-  var out = "";
-  var i;
-  for(i = 0; i < arr.length; i++) {
-    out += ' ' + Math.round(arr[i].timeToStation/60) + 'mz';
-  }
-  document.getElementById("cmd").innerHTML = out;
-}
 
 </script>
 
