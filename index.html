@@ -6,7 +6,11 @@
 </head>
 <body style="background: black;">
 
-<p class="big">Bonny St <span id="bonny" class="bold"></span> St Martins Cl <span id="Martin" class="bold"></span></p>
+ <div class="row big">
+  <div class="column">Bonny St <span id="bonny" class="bold"></span></div>
+  <div class="column">St Martins Cl <span id="Martin" class="bold"></span></div>
+</div> 
+<p class="big"> </p>
 <p class="big"><span id="274west" class="bold right"></span>274 West</p>
 <p class="big"><span id="274east" class="bold right"></span>274 East</p>
 <div class="big">CMD East<span id="cmdeast" class="right"></span></div>
@@ -168,6 +172,17 @@ function myFunction4(arr) {
   content: "";
   clear: both;
   display: table;
+}
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 </style>
