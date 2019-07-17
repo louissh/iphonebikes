@@ -8,8 +8,10 @@
 
 <p class="red"><span id="bonny" class="bold"></span>Bonny St </p>
 <p class="red"><span id="Martin" class="bold"></span>St Martins Cl </p>
-<p class="red"><span id="west" class="bold"></span>274W</p>
-<p class="red"><span id="east" class="bold"></span>274E</p>
+<p class="red"><span id="274west" class="bold"></span>274W</p>
+<p class="red"><span id="274east" class="bold"></span>274E</p>
+<p class="red"><span id="cmd" class="bold"></span>CMD</p>
+
 
 
 <script>
@@ -57,7 +59,7 @@ function myFunction(arr) {
   for(i = 0; i < arr.length; i++) {
     out += ' ' + Math.round(arr[i].timeToStation/60) + 'm';
   }
-  document.getElementById("west").innerHTML = out;
+  document.getElementById("274west").innerHTML = out;
 }
 
 //274east
@@ -79,8 +81,31 @@ function myFunction2(arr) {
   for(i = 0; i < arr.length; i++) {
     out += ' ' + Math.round(arr[i].timeToStation/60) + 'm';
   }
-  document.getElementById("east").innerHTML = out;
+  document.getElementById("274east").innerHTML = out;
 }
+
+//cmd
+var xmlhttp3 = new XMLHttpRequest();
+var url3 = "https://api.tfl.gov.uk/StopPoint/490003120E/Arrivals?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823";
+
+xmlhttp3.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myArr2 = JSON.parse(this.responseText);
+    myFunction2(myArr2);
+  }
+};
+xmlhttp3.open("GET", url3, true);
+xmlhttp3.send();
+
+function myFunction3(arr) {
+  var out = "";
+  var i;
+  for(i = 0; i < arr.length; i++) {
+    out += arr[i].destinationName + ' ' + Math.round(arr[i].timeToStation/60) + 'm';
+  }
+  document.getElementById("cmd").innerHTML = out;
+}
+
 </script>
 
 
@@ -91,7 +116,7 @@ function myFunction2(arr) {
 float:right;
 }
 .red{
-    font-size: 10vw;
+    font-size: 6vw;
     color: red;
     font-family: arial;
     margin: 0;
