@@ -114,7 +114,7 @@ function myFunction3(arr) {
   var out = "";
   var i;
   for(i = 0; i < arr.length; i++) {
-    out += arr[i].destinationName.substring(0, 2) + '<span class="bold"> ' + Math.round(arr[i].timeToStation/60) + 'm</span>, ';
+    out += arr[i].destinationName.substring(0, 2) + '<span class="bold"> ' + Math.round(arr[i].timeToStation/60) + 'm</span> ';
   }
   document.getElementById("cmdeast").innerHTML = out;
 }
@@ -142,7 +142,7 @@ function myFunction4(arr) {
   var out = "";
   var i;
   for(i = 0; i < arr.length; i++) {
-    out += arr[i].destinationName.substring(0, 2) + '<span class="bold"> ' + Math.round(arr[i].timeToStation/60) + 'm</span>, ';
+    out += arr[i].destinationName.substring(0, 2) + '<span class="bold"> ' + Math.round(arr[i].timeToStation/60) + 'm</span> ';
   }
   document.getElementById("cmdwest").innerHTML = out;
 }
