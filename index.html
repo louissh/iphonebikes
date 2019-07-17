@@ -6,8 +6,7 @@
 </head>
 <body style="background: black;">
 
-<p class="big"><span id="bonny" class="bold right"></span>Bonny Street </p>
-<p class="big"><span id="Martin" class="bold right"></span>St Martins Close </p>
+<p class="big">Bonny Street <span id="bonny" class="bold"></span> St Martins Close <span id="Martin" class="bold"></span></p>
 <p class="big"><span id="274west" class="bold right"></span>274 West</p>
 <p class="big"><span id="274east" class="bold right"></span>274 East</p>
 <div class="big">CMD East<span id="cmdeast" class="right"></span></div>
@@ -22,7 +21,7 @@ var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var myObj = JSON.parse(this.responseText);
-    document.getElementById("bonny").innerHTML = myObj.additionalProperties[6].value + ' bikes';
+    document.getElementById("bonny").innerHTML = myObj.additionalProperties[6].value + '';
   }
 };
 xmlhttp.open("GET", "https://api.tfl.gov.uk/BikePoint/BikePoints_462?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823", true);
@@ -34,7 +33,7 @@ var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var myObj2 = JSON.parse(this.responseText);
-    document.getElementById("Martin").innerHTML = myObj2.additionalProperties[6].value + ' bikes';
+    document.getElementById("Martin").innerHTML = myObj2.additionalProperties[6].value + '';
   }
 };
 xmlhttp.open("GET", "https://api.tfl.gov.uk/BikePoint/BikePoints_604?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823", true);
