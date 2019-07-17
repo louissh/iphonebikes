@@ -73,11 +73,11 @@ xmlhttp2.onreadystatechange = function() {
 xmlhttp2.open("GET", url2, true);
 xmlhttp2.send();
 
-function myFunction2(arr2) {
+function myFunction2(arr) {
   var out = "";
   var i;
-  for(i = 0; i < arr2.length; i++) {
-    out += ' ' + Math.round(arr2[I].timeToStation/60) + 'm';
+  for(i = 0; i < arr.length; i++) {
+    out += ' ' + Math.round(arr[I].timeToStation/60) + 'm';
   }
   document.getElementById("east").innerHTML = out;
 }
