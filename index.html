@@ -6,13 +6,13 @@
 </head>
 <body style="background: black;">
 
-<p class="red"><span id="bonny" class="bold"></span>Bonny St </p>
-<p class="red"><span id="Martin" class="bold"></span>St Martins Cl </p>
-<p class="red"><span id="274west" class="bold"></span>274 West</p>
-<p class="red"><span id="274east" class="bold"></span>274 East</p>
-<div class="red">CMD East <span id="cmdeast" class="bold"></span></div>
+<p class="red"><span id="bonny" class="bold right"></span>Bonny St </p>
+<p class="red"><span id="Martin" class="bold right"></span>St Martins Cl </p>
+<p class="red"><span id="274west" class="bold right"></span>274 West</p>
+<p class="red"><span id="274east" class="bold right"></span>274 East</p>
+<div class="red">CMD East <span id="cmdeast" class="right"></span></div>
 <div class="clearfix"></div>
-<div class="red"><span id="cmdwest" class="bold"></span>CMD West</div>
+<div class="red"><span id="cmdwest" class="right"></span>CMD West</div>
 
 
 
@@ -114,7 +114,7 @@ function myFunction3(arr) {
   var out = "";
   var i;
   for(i = 0; i < arr.length; i++) {
-    out += arr[i].destinationName.replace(/ .*/,'') + ' ' + Math.round(arr[i].timeToStation/60) + 'm <br />';
+    out += arr[i].destinationName.substring(0, 2) + '<span class="bold"> ' + Math.round(arr[i].timeToStation/60) + 'm</span>, ';
   }
   document.getElementById("cmdeast").innerHTML = out;
 }
@@ -142,7 +142,7 @@ function myFunction4(arr) {
   var out = "";
   var i;
   for(i = 0; i < arr.length; i++) {
-    out += arr[i].destinationName.replace(/ .*/,'') + ' ' + Math.round(arr[i].timeToStation/60) + 'm <br />';
+    out += arr[i].destinationName.substring(0, 2) + '<span class="bold"> ' + Math.round(arr[i].timeToStation/60) + 'm</span>, ';
   }
   document.getElementById("cmdwest").innerHTML = out;
 }
@@ -152,7 +152,8 @@ function myFunction4(arr) {
 
 <style>
 
-*{
+
+.red{
     font-size: 6vw;
     color: red;
     font-family: sans-serif;
@@ -161,14 +162,15 @@ function myFunction4(arr) {
 }
 .bold{
     font-weight: bold;
+    }
+.right{
     float: right;
 }
 .clearfix::after {
   content: "";
   clear: both;
   display: table;
-}
-</style>
+}</style>
 
 </body>
 </html>
