@@ -64,7 +64,7 @@ function myFunction(arr) {
 var xmlhttp2 = new XMLHttpRequest();
 var url2 = "https://api.tfl.gov.uk/StopPoint/490003120E/Arrivals?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823";
 
-xmlhttp.onreadystatechange = function() {
+xmlhttp2.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var myArr2 = JSON.parse(this.responseText);
     myFunction2(myArr2);
