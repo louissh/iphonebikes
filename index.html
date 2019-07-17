@@ -6,12 +6,13 @@
 </head>
 <body style="background: black;">
 
-<p class="red">Bonny 
-<span id="bonny" class="bold"></span></p>
-<p class="red">St Martins 
-<span id="Martin" class="bold"></span></p>
+<p class="red">Bonny <span id="bonny" class="bold"></span></p>
+<p class="red">St Martins <span id="Martin" class="bold"></span></p>
+<p class="red">274 West<span id="west" class="bold"></span></p>
 
 <script>
+
+//bonny
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
@@ -23,7 +24,7 @@ xmlhttp.open("GET", "https://api.tfl.gov.uk/BikePoint/BikePoints_462?app_id=9d4c
 xmlhttp.send();
 
 
-
+//martins
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
@@ -33,7 +34,32 @@ xmlhttp.onreadystatechange = function() {
 };
 xmlhttp.open("GET", "https://api.tfl.gov.uk/BikePoint/BikePoints_604?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823", true);
 xmlhttp.send();
+
+
+//274west
+var xmlhttp = new XMLHttpRequest();
+var url = "https://api.tfl.gov.uk/StopPoint/490003120W/Arrivals?app_id=9d4c19c5&app_key=4fab1b858c83977630bb1528938c7823";
+
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myArr = JSON.parse(this.responseText);
+    myFunction(myArr);
+  }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(arr) {
+  var out = "";
+  var i;
+  for(i = 0; i < arr.length; i++) {
+    out += ' ' + Math.round(arr[i].timeToStation/60) + ',';
+  }
+  document.getElementById("west").innerHTML = out;
+}
 </script>
+
+
 
 <style>
 .bold{
