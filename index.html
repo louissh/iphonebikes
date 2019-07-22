@@ -10,8 +10,8 @@
   <div class="column">Bonny St <span id="bonny" class="bold"></span></div>
   <div class="column">St Martins <span id="Martin" class="bold"></span></div>
 </div> 
-<p class="big"><span id="274west" class="bold right"></span>274 West</p>
-<p class="big"><span id="274east" class="bold right"></span>274 East</p>
+<p class="big"><span id="274west" class="right"></span>274 West</p>
+<p class="big"><span id="274east" class="right"></span>274 East</p>
 <div class="big">CMD W<span id="cmdwest" class="right"></span></div>
 <div class="clearfix"></div>
 <div class="big">CMD E<span id="cmdeast" class="right"></span></div>
@@ -65,7 +65,7 @@ function myFunction(arr) {
   var out = "";
   var i;
   for(i = 0; i < arr.length; i++) {
-    out += ' ' + Math.round(arr[i].timeToStation/60) + 'm';
+    out += ' <span class="bold">' + Math.round(arr[i].timeToStation/60) + '</span>m';
   }
   document.getElementById("274west").innerHTML = out;
 }
@@ -90,7 +90,7 @@ function myFunction2(arr) {
   var out = "";
   var i;
   for(i = 0; i < arr.length; i++) {
-    out += ' ' + Math.round(arr[i].timeToStation/60) + 'm';
+    out += ' <span class="bold">' + Math.round(arr[i].timeToStation/60) + '</span>m';
   }
   document.getElementById("274east").innerHTML = out;
 }
