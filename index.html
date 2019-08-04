@@ -10,13 +10,11 @@
   <div class="column">Bonny St <span id="bonny" class="bold"></span></div>
   <div class="column">St Martins <span id="Martin" class="bold"></span></div>
 </div> 
-<p class="big"><span id="274west" class="right"></span>274 West</p>
-<p class="big"><span id="274east" class="right"></span>274 East</p>
-<div class="big">CMD W<span id="cmdwest" class="right"></span></div>
 <div class="clearfix"></div>
-<div class="big">CMD E<span id="cmdeast" class="right"></span></div>
+<p class="big">274 W <span id="274west"></span> E <span id="274east"></span></p>
+<div class="big">CRW <span id="cmdwest"></span> CRE <span id="cmdeast"></span></div>
 
-
+<script type='text/javascript' src='https://darksky.net/widget/graph-bar/51.5073,-0.1276/uk212/en.js?width=100%&height=225&title=Full Forecast&textColor=ffffff&bgColor=transparent&transparency=true&skyColor=undefined&fontFamily=Arial&customFont=&units=uk2&timeColor=ffffff&tempColor=ffffff&currentDetailsOption=true'></script>
 <img style="width:100%;height:8vw;object-fit:cover;" src="https://www.yourweather.co.uk/wimages/fotof2d2e8e8334d01b2b90af82b6b3aea81.png">
 
 
@@ -65,7 +63,7 @@ function myFunction(arr) {
   var out = "";
   var i;
   for(i = 0; i < arr.length; i++) {
-    out += ' <span class="bold">' + Math.round(arr[i].timeToStation/60) + '</span>m';
+    out += '<span class="bold">' + Math.round(arr[i].timeToStation/60) + '</span>,';
   }
   document.getElementById("274west").innerHTML = out;
 }
@@ -90,7 +88,7 @@ function myFunction2(arr) {
   var out = "";
   var i;
   for(i = 0; i < arr.length; i++) {
-    out += ' <span class="bold">' + Math.round(arr[i].timeToStation/60) + '</span>m';
+    out += '<span class="bold">' + Math.round(arr[i].timeToStation/60) + '</span>,';
   }
   document.getElementById("274east").innerHTML = out;
 }
@@ -107,7 +105,7 @@ xmlhttp3.onreadystatechange = function() {
 });
 myArr3 = myArr3.filter(function (a) {
     return a.platformName === 'Platform 2';
-}).slice(0,3);;
+}).slice(0,2);;
 myFunction3(myArr3);
   }
 };
@@ -118,7 +116,7 @@ function myFunction3(arr) {
   var out = "";
   var i;
   for(i = 0; i < arr.length; i++) {
-    out += arr[i].destinationName.substring(0, 2) + '<span class="bold">' + Math.round(arr[i].timeToStation/60) + 'm</span> ';
+    out += arr[i].destinationName.substring(0, 2) + '<span class="bold">' + Math.round(arr[i].timeToStation/60) + '</span> ';
   }
   document.getElementById("cmdeast").innerHTML = out;
 }
@@ -135,7 +133,7 @@ xmlhttp4.onreadystatechange = function() {
 });
 myArr4 = myArr4.filter(function (a) {
     return a.platformName === 'Platform 1';
-}).slice(0,3);
+}).slice(0,2);
 myFunction4(myArr4);
   }
 };
@@ -146,7 +144,7 @@ function myFunction4(arr) {
   var out = "";
   var i;
   for(i = 0; i < arr.length; i++) {
-    out += arr[i].destinationName.substring(0, 2) + '<span class="bold">' + Math.round(arr[i].timeToStation/60) + 'm</span> ';
+    out += arr[i].destinationName.substring(0, 2) + '<span class="bold">' + Math.round(arr[i].timeToStation/60) + '</span> ';
   }
   document.getElementById("cmdwest").innerHTML = out;
 }
