@@ -63,7 +63,7 @@ function myFunction(arr) {
   var out = "";
   var i;
   for(i = 0; i < arr.length; i++) {
-    out += '<span class="bold">' + Math.round(arr[i].timeToStation/60) + '</span>,';
+    out += '<span class="bold">' + Math.round(arr[i].timeToStation/60) + '</span> ';
   }
   document.getElementById("274west").innerHTML = out;
 }
@@ -88,7 +88,7 @@ function myFunction2(arr) {
   var out = "";
   var i;
   for(i = 0; i < arr.length; i++) {
-    out += '<span class="bold">' + Math.round(arr[i].timeToStation/60) + '</span>,';
+    out += '<span class="bold">' + Math.round(arr[i].timeToStation/60) + '</span> ';
   }
   document.getElementById("274east").innerHTML = out;
 }
