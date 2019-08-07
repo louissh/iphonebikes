@@ -7,7 +7,45 @@
 <title>iPhoneBikes</title>
  <meta name="apple-mobile-web-app-capable" content="yes">
 <meta http-equiv="refresh" content="60"/>
+
+
+<style>
+
+.big{
+    font-size: 7vw;
+    font-family: sans-serif;
+    margin: 0;
+ color: gray; 
+}
+.bold{
+    color: red;
+    font-weight: bold;
+    }
+.right{
+    float: right;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+</style>
 </head>
+
+
+
 <body style="background: black;">
 
  <div class="row big">
@@ -156,39 +194,7 @@ function myFunction4(arr) {
 
 
 
-<style>
 
-.big{
-    font-size: 7vw;
-    font-family: sans-serif;
-    margin: 0;
- color: gray; 
-}
-.bold{
-    color: red;
-    font-weight: bold;
-    }
-.right{
-    float: right;
-}
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-.column {
-  float: left;
-  width: 50%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-</style>
 
 </body>
 </html>
